@@ -10,6 +10,30 @@ use App\Services\Rate\RateCalculatorInterface;
 
 class RateController extends Controller
 {
+    /**
+     * @OA\Post(
+     *      path="/rate",
+     *      operationId="calculateRate",
+     *      tags={"Rates"},
+     *      summary="Calculates charging process rating",
+     *      description="Calculates and returns charging process rating based on given charge detail record",
+     *      @OA\RequestBody(
+     *          required=true,
+     *          description="Pass charge detail records",
+     *          @OA\JsonContent(
+     *              required={"rate","cdr"},
+     *              @OA\Property(property="rate", ref="#/components/schemas/rate"),
+     *              @OA\Property(property="cdr", ref="#/components/schemas/cdr")
+     *          ),
+     *          ),
+     *          @OA\Response(
+     *              response=200,
+     *              description="Successful",
+     *              @OA\JsonContent(ref="#/components/schemas/CalculatedRate")
+     *          )
+     *      )
+     */
+
     private RateCalculatorInterface $rateCalculatorService;
 
     public function __construct(RateCalculatorInterface $rateCalculatorService)

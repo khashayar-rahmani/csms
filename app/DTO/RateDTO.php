@@ -7,6 +7,19 @@ namespace App\DTO;
 use App\Http\Requests\CalculateRateRequest;
 use Spatie\DataTransferObject\DataTransferObject;
 
+/**
+ * @OA\Schema(
+ *     schema="rate",
+ *     title="rate",
+ *     description="Rate",
+ *     @OA\Xml(name="Rate"),
+ *
+ *     @OA\Property(property="energy", type="float", example="0.3"),
+ *     @OA\Property(property="time", type="float", example="2"),
+ *     @OA\Property(property="transaction", type="float", example="1"),
+ * )
+ */
+
 class RateDTO extends DataTransferObject
 {
     public float $energy;
