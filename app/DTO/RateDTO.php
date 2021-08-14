@@ -5,6 +5,8 @@ namespace App\DTO;
 
 
 use App\Http\Requests\CalculateRateRequest;
+use Database\Factories\RateFactory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\DataTransferObject\DataTransferObject;
 
 /**
@@ -22,9 +24,16 @@ use Spatie\DataTransferObject\DataTransferObject;
 
 class RateDTO extends DataTransferObject
 {
+    use HasFactory;
+
     public float $energy;
     public float $time;
     public float $transaction;
+
+    public static function newFactory(): RateFactory
+    {
+        return RateFactory::new();
+    }
 
     public static function fromRequest(CalculateRateRequest $request): RateDTO
     {

@@ -6,6 +6,8 @@ namespace App\DTO;
 
 use App\Http\Requests\CalculateRateRequest;
 use Carbon\Carbon;
+use Database\Factories\ChargeDetailRecordFactory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\DataTransferObject\DataTransferObject;
 
 /**
@@ -24,10 +26,17 @@ use Spatie\DataTransferObject\DataTransferObject;
 
 class ChargeDetailRecordDTO extends DataTransferObject
 {
+    use HasFactory;
+
     public int $meterStart;
     public int $meterStop;
     public Carbon $timestampStart;
     public Carbon $timestampStop;
+
+    public static function newFactory(): ChargeDetailRecordFactory
+    {
+        return ChargeDetailRecordFactory::new();
+    }
 
     public static function fromRequest(CalculateRateRequest $request): ChargeDetailRecordDTO
     {
