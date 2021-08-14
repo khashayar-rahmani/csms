@@ -10,10 +10,10 @@ use Illuminate\Routing\Controller as BaseController;
 /**
  * @OA\Info(
  *      version="1.0.0",
- *      title="Charging Station Management System API Documentation",
- *      description="Full instruction on how to use CSMS endpoints",
+ *      title="CSMS API Documentation",
+ *      description="Full instruction on how to use Charging Station Management System endpoints",
  *      @OA\Contact(
- *          email="khashayarRahmani@gmail.com"
+ *          email="khashayarRahmani.1511@gmail.com"
  *      ),
  *      @OA\License(
  *          name="Apache 2.0",

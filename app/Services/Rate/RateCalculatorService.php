@@ -30,12 +30,16 @@ class RateCalculatorService implements RateCalculatorInterface
         $timeStampStopInCarbon = $cdr->timestampStop;
         $duration = $timeStampStopInCarbon->diffInMinutes($timeStampStartInCarbon);
 
-        // Converting units
-        $hourlyRate = $rate->time / 60;
-        $perKWRate = $rate->energy / 1000;
+        // Calculating rates
+        $durationRate = $duration * $rate->time;
+        $energyRate = $consumedEnergy * $rate->energy;
 
-        $consumedEnergyPrice = FloatingPointHelper::getCalculableNumber($consumedEnergy * $perKWRate);
-        $durationPrice = FloatingPointHelper::getCalculableNumber($duration * $hourlyRate);
+        // Converting units
+        $hourlyRate = $durationRate / 60;
+        $perKWRate = $energyRate / 1000;
+
+        $consumedEnergyPrice = FloatingPointHelper::getCalculableNumber($perKWRate);
+        $durationPrice = FloatingPointHelper::getCalculableNumber($hourlyRate);
 
         $overall = FloatingPointHelper::getOutPutFormattedNumber($consumedEnergyPrice + $durationPrice + $rate->transaction);
 
