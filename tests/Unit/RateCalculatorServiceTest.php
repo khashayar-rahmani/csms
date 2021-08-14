@@ -24,7 +24,7 @@ class RateCalculatorServiceTest extends TestCase
     /**
      * @throws UnknownProperties
      */
-    public function test_the_equality_of_sum_of_the_components_with_the_overall() {
+    public function test_check_the_equality_of_sum_of_the_components_with_the_overall() {
 
         // Creating rate and cdr objects with random values
         $rate = RateDTO::factory()->make();
@@ -50,15 +50,15 @@ class RateCalculatorServiceTest extends TestCase
      */
     // Testing edge cases like when cdr amounts are equal which means
     // Only the transaction fee should be calculated
-    public function test_when_cdr_amounts_are_equal() {
+    public function test_the_check_equality_of_the_overall_with_transaction_fee_when_cdr_amounts_are_equal() {
 
-        $rate = RateDTO::factory()->make();
-        $cdr = ChargeDetailRecordDTO::factory()->make([
-            'meterStart'        => 1204307,
-            'meterStop'         => 1204307,
-            'timestampStart'    => new Carbon('2021-04-05T10:04:00Z'),
-            'timestampStop'     => new Carbon('2021-04-05T10:04:00Z'),
-        ]);
+            $rate = RateDTO::factory()->make();
+            $cdr = ChargeDetailRecordDTO::factory()->make([
+                'meterStart'        => 1204307,
+                'meterStop'         => 1204307,
+                'timestampStart'    => new Carbon('2021-04-05T10:04:00Z'),
+                'timestampStop'     => new Carbon('2021-04-05T10:04:00Z'),
+            ]);
 
         $calculatedRate = $this->rateCalculatorService->calculateRate($rate, $cdr);
 
