@@ -9,12 +9,6 @@ use Tests\TestCase;
 
 class RateControllerTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
-
     // Just testing if endpoint is up and working
     public function test_making_an_api_request()
     {
