@@ -29,7 +29,7 @@ docker-compose exec app php artisan l5-swagger:generate
 
 You can find the documentation on: http://localhost:8000/api/documentation
 
-##Tests
+## Tests
 
 There are two type of tests in this project.
 
