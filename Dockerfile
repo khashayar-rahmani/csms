@@ -20,9 +20,6 @@ RUN usermod -u 1000 www-data
 # Copy application folder
 COPY . /var/www
 
-# Creating .env file
-COPY .env.example .env
-
 # Copy existing application directory permissions
 COPY --chown=www-data:www-data . /var/www
 

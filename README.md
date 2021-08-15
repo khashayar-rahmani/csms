@@ -11,6 +11,8 @@ Clone the project locally.
 
 ### Running the service
 
+If you have any local config, navigate into the root of the project and copy .env.example as .env. Fill your local config in .env file.
+
 To set up the whole stack, just issue the following command in the root of the project.
 
 ```
